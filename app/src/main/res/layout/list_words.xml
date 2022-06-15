@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/pizzaFoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@id/namePizza"
+            android:layout_alignBottom="@id/smallPizzaPrice"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/cheese2" />
+
+        <TextView
+            android:id="@+id/namePizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_toEndOf="@+id/pizzaFoto"
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="Сырный цыплёнок" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/namePizza"
+            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/pizzaFoto"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            tools:text="Филе куриное, сыр Моцарелла, сосиски охотничьи, говядина, шампиньоны, помидоры" />
+
+        <TextView
+            android:id="@+id/small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_toEndOf="@+id/pizzaFoto"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/small"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/smallPizzaPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/small"
+            android:layout_alignStart="@+id/small"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            tools:text="20.00 с" />
+
+
+        <TextView
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@+id/small"
+            android:paddingTop="10dp"
+            android:text="@string/big"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/mediumPizzaPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/big"
+            android:layout_alignStart="@+id/medium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="20.00 с" />
+
+        <TextView
+            android:id="@+id/big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@+id/medium"
+            android:paddingTop="10dp"
+            android:text="@string/medium"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/bigPizzaPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/big"
+            android:layout_alignStart="@+id/big"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="20.00 с" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
