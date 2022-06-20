@@ -1,30 +1,45 @@
 package com.app.adapter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.app.adapter.data.ListShowPizza
-import com.app.adapter.data.PizzaModel
+import com.app.adapter.data.*
 import com.app.adapter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private var recyclerView  : RecyclerView? = null
-    private val words:List<String> = listOf("A","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т")
-    lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: ListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        val pizaList = ListShowPizza().listPizza()
-        seputAdapter(pizaList)
+        setContentView(R.layout.activity_main)
+        val pizaList = pizzaList()
+        val beveragesList = beveragesList()
+        val desertsList = desertsList()
+        val snackList = snackList()
+        val comboList = comboList()
+        when(0){
+            0 -> seputAdapter(pizaList)
+            1 -> seputAdapter(beveragesList)
+            2 -> seputAdapter(desertsList)
+            3 -> seputAdapter(snackList)
+            4 -> seputAdapter(comboList)
+        }
     }
-    private fun seputAdapter(piza:List<PizzaModel>) {
-        recyclerView = binding.adapter
+    private fun seputAdapter(piza:List<Food>) {
+        recyclerView = findViewById(R.id.adapter)
         recyclerView?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-        recyclerView?.adapter = ListAdapter(piza)
+        adapter = ListAdapter()
+        adapter.submitList(piza)
+        adapter.onItemClick = { food ->
+            val intent = Intent(this, AboutCategoryActivity::class.java)
+            intent.putExtra("NAME", food.name)
+            intent.putExtra("DESCRIPTION", food.description)
+            intent.putExtra("PRICE", food.price.toString())
+            intent.putExtra("IMAGE",food.imageId )
+            startActivity(intent)
+        }
+        recyclerView?.adapter = adapter
     }
 }

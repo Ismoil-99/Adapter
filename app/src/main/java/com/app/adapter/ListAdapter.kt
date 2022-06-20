@@ -6,31 +6,40 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.app.adapter.data.PizzaModel
+import com.app.adapter.data.Food
 
-class ListAdapter(private val pizza : List<PizzaModel>) : RecyclerView.Adapter<ListAdapter.WordsViewHolder>() {
-    inner class WordsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val name_word = view.findViewById<TextView>(R.id.namePizza)
-        val description = view.findViewById<TextView>(R.id.description)
-        val bigPizzaPrice = view.findViewById<TextView>(R.id.bigPizzaPrice)
-        val smallPizzaPrice = view.findViewById<TextView>(R.id.smallPizzaPrice)
-        val mediumPizzaPrice = view.findViewById<TextView>(R.id.mediumPizzaPrice)
-        val imagePizza = view.findViewById<ImageView>(R.id.pizzaFoto)
+class ListAdapter: RecyclerView.Adapter<ListAdapter.ProductsViewHolder>() {
+
+    private var listNewFood:List<Food> = emptyList()
+
+    fun submitList(food: List<Food>) {
+        listNewFood = food
+        notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
+    var onItemClick: ((Food) -> Unit)? = null
+    inner class ProductsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        val name_product = view.findViewById<TextView>(R.id.productsName)
+        val description_products = view.findViewById<TextView>(R.id.description)
+        val image_products = view.findViewById<ImageView>(R.id.pizzaFoto)
+        val price_products = view.findViewById<TextView>(R.id.priceFood)
+        init {
+            view.setOnClickListener {
+                onItemClick?.invoke(listNewFood[adapterPosition])
+            }
+        }
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.list_words, parent, false)
-        return WordsViewHolder(layout)
+        return ProductsViewHolder(layout)
     }
-    override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
-        val item = pizza[position]
-        holder.name_word.text = item.namePizza
-        holder.bigPizzaPrice.text = item.bigPizzaPrice.toString()+"см"
-        holder.mediumPizzaPrice.text = item.mediumPizzaPrice.toString()+"см"
-        holder.smallPizzaPrice.text = item.smallPizzaPrice.toString()+"см"
-        holder.description.text = item.description
-        holder.imagePizza.setImageResource(pizza[position].imagePizza)
+    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
+        val item = listNewFood[position]
+        holder.name_product.text = item.name
+        holder.description_products.text = item.description
+        holder.image_products.setImageResource(listNewFood[position].imageId)
+        holder.price_products.text = "${item.price} TJS"
     }
-    override fun getItemCount() = pizza.size
+    override fun getItemCount() = listNewFood.size
 }

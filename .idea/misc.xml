@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/drawable/ic_rounded.xml" value="0.1645" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/drawable/round_button.xml" value="0.1645" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/layout/activity_about_category.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/layout/list_words.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Adapter/app/src/main/res/layout/list_words.xml" value="0.22" />
       </map>
     </option>
   </component>
